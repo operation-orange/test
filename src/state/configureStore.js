@@ -3,10 +3,10 @@ import {
 } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import testyWestyReducer from './testyWesty/reducer';
+import hotelsReducer from './hotels/reducer';
 
 export const rootReducer = combineReducers({
-  testyWesty: testyWestyReducer,
+  hotels: hotelsReducer,
 });
 
 export default function configureStore() {

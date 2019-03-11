@@ -1,14 +1,11 @@
+/* eslint-disable global-require */
 import { getHotels, client } from './client';
 
-jest.mock('axios', () => {
-  const instanceMock = jest.fn();
-  instanceMock.mockReturnValue({
+jest.mock('axios', () => ({
+  create: jest.fn(() => ({
     get: jest.fn(),
-  });
-  return {
-    create: instanceMock,
-  };
-});
+  })),
+}));
 
 test('axios is configured as expected', () => {
   expect(require('axios').create).toHaveBeenCalledWith({
