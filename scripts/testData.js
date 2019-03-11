@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const sampleLength = 100;
 const possibleFacilities = ['car park', 'pool', 'gym', 'spa'];
-const dataDir = './data';
+const dataDir = './public/data';
 
 if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir);
