@@ -1,5 +1,5 @@
 ### Installing and Running
-`npm i && npm start`
+- `npm i && npm start` to run and `npm test` to test.
 
 ### Notes
 - Bootstrapped with create-react-app to save a little time.
@@ -13,7 +13,7 @@
   - The full action > async data call > state update > render, process.
   - eslint (run using `npm run lint`).
   - Of course the React components to display the data.
-  - A much simplified project structure similar to what I'd use in prodcution,
+  - A much simplified project structure similar to what I'd use in production,
 - If I had more time:
   - Obviously the UI is godawful so I'd love to pretty that up.
   - Comprehensive unit tests for everything.
