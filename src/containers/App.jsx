@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import connectState from './App.state';
 import FilterForm from '../components/FilterForm/FilterForm';
+import HotelsList from '../components/HotelsList/HotelsList';
 
 export class App extends Component {
   static propTypes = {
@@ -22,11 +23,10 @@ export class App extends Component {
       data,
     } = this.props;
 
-    console.log(data);
-
     return (
       <div>
         <FilterForm />
+        <HotelsList data={data} />
       </div>
     );
   }
