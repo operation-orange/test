@@ -19,7 +19,8 @@ const facilitiesList = (possibleFacilitiesLength => () => {
   return randomList;
 })(possibleFacilities.length);
 
-const data = Array(sampleLength).fill(0).map(() => ({
+const data = Array(sampleLength).fill(0).map((item, i) => ({
+  id: i + 1,
   name: faker.company.companyName(),
   rating: Math.floor(Math.random() * 5) + 1,
   facilities: facilitiesList(),
