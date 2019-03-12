@@ -20,7 +20,7 @@ const testName = (name, filter) => name.toLowerCase().includes(filter.toLowerCas
 const testRating = (rating, filter) => String(rating).includes(filter);
 const testFacilities = (facilities, facility) => !facility || facilities.includes(facility);
 
-const filterList = (list, {
+export const filterList = (list, {
   name,
   rating,
   facility,

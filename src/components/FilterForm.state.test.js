@@ -2,7 +2,10 @@ import {
   mapStateToProps,
   mapDispatchToProps,
 } from './FilterForm.state';
-import { updateFilterForm } from '../state/hotels/actions';
+import {
+  updateFilterForm,
+  filterHotels,
+} from '../state/hotels/actions';
 
 test('mapStateToProps() is configured as expected', () => {
   expect(mapStateToProps({
@@ -22,6 +25,7 @@ test('mapStateToProps() is configured as expected', () => {
 
 test('mapDispatchToProps() is configured as expected', () => {
   expect(mapDispatchToProps).toEqual({
+    filterHotelsAction: filterHotels,
     updateFilterFormAction: updateFilterForm,
   });
 });

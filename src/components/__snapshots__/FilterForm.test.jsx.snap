@@ -23,6 +23,7 @@ exports[`renders default state passing form data 1`] = `
     value="the facility"
   />
   <button
+    onClick={[Function]}
     type="button"
   >
     Filter

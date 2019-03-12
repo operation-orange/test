@@ -7,7 +7,7 @@ import { fetchHotels } from '../state/hotels/actions';
 test('mapStateToProps() is configured as expected', () => {
   expect(mapStateToProps({
     hotels: {
-      list: 'list',
+      filteredList: 'list',
       loading: 'loading',
     },
   })).toEqual({

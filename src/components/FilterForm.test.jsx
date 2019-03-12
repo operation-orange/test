@@ -9,6 +9,7 @@ test('renders default state passing form data', () => {
       rating="the rating"
       facility="the facility"
       updateFilterFormAction={() => {}}
+      filterHotelsAction={() => {}}
     />,
   );
   expect(wrapper).toMatchSnapshot();
@@ -22,6 +23,7 @@ test.each(['name', 'rating', 'facility'])('onChange for the %s field triggers up
       rating="the rating"
       facility="the facility"
       updateFilterFormAction={mockUpdateFilterFormAction}
+      filterHotelsAction={() => {}}
     />,
   );
 
