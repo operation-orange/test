@@ -8,18 +8,26 @@ export const FilterForm = ({
   name, rating, facility, updateFilterFormAction, filterHotelsAction,
 }) => (
   <div className="filter-form">
+    Hotel Name:
+    {' '}
     <input
       type="text"
       className="filter-form__name-field"
       onChange={changeHandler(updateFilterFormAction, 'name')}
       value={name}
     />
+    {' '}
+    Rating:
+    {' '}
     <input
       type="text"
       className="filter-form__rating-field"
       onChange={changeHandler(updateFilterFormAction, 'rating')}
       value={rating}
     />
+    {' '}
+    Facility:
+    {' '}
     <input
       type="text"
       className="filter-form__facility-field"

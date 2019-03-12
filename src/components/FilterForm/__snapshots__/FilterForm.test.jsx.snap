@@ -4,18 +4,26 @@ exports[`renders default state passing form data 1`] = `
 <div
   className="filter-form"
 >
+  Hotel Name:
+   
   <input
     className="filter-form__name-field"
     onChange={[Function]}
     type="text"
     value="the name"
   />
+   
+  Rating:
+   
   <input
     className="filter-form__rating-field"
     onChange={[Function]}
     type="text"
     value="the rating"
   />
+   
+  Facility:
+   
   <input
     className="filter-form__facility-field"
     onChange={[Function]}
