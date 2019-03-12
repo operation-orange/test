@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders default state passing form data 1`] = `
+<div
+  className="filter-form"
+>
+  <input
+    className="filter-form__name-field"
+    onChange={[Function]}
+    type="text"
+    value="the name"
+  />
+  <input
+    className="filter-form__rating-field"
+    onChange={[Function]}
+    type="text"
+    value="the rating"
+  />
+  <input
+    className="filter-form__facility-field"
+    onChange={[Function]}
+    type="text"
+    value="the facility"
+  />
+  <button
+    type="button"
+  >
+    Filter
+  </button>
+</div>
+`;
