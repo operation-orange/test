@@ -5,7 +5,7 @@ import {
 import {
   updateFilterForm,
   filterHotels,
-} from '../state/hotels/actions';
+} from '../../state/hotels/actions';
 
 test('mapStateToProps() is configured as expected', () => {
   expect(mapStateToProps({

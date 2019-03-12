@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { updateFilterForm, filterHotels } from '../state/hotels/actions';
+import { updateFilterForm, filterHotels } from '../../state/hotels/actions';
 
 export const mapStateToProps = ({ hotels: { filterForm } }) => ({
   name: filterForm.name,

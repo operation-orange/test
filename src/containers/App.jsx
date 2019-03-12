@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import connectState from './App.state';
-import FilterForm from '../components/FilterForm';
+import FilterForm from '../components/FilterForm/FilterForm';
 
 export class App extends Component {
   static propTypes = {
