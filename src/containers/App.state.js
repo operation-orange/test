@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchHotels } from '../state/hotels/actions';
 
 export const mapStateToProps = ({ hotels }) => ({
-  data: hotels.list,
+  data: hotels.filteredList,
   loading: hotels.loading,
 });
 

@@ -5,7 +5,7 @@ import connectState from './FilterForm.state';
 const changeHandler = (action, field) => e => action({ [field]: e.currentTarget.value });
 
 export const FilterForm = ({
-  name, rating, facility, updateFilterFormAction,
+  name, rating, facility, updateFilterFormAction, filterHotelsAction,
 }) => (
   <div className="filter-form">
     <input
@@ -26,7 +26,12 @@ export const FilterForm = ({
       onChange={changeHandler(updateFilterFormAction, 'facility')}
       value={facility}
     />
-    <button type="button">Filter</button>
+    <button
+      type="button"
+      onClick={filterHotelsAction}
+    >
+      Filter
+    </button>
   </div>
 );
 
@@ -35,6 +40,7 @@ FilterForm.propTypes = {
   rating: PropTypes.string.isRequired,
   facility: PropTypes.string.isRequired,
   updateFilterFormAction: PropTypes.func.isRequired,
+  filterHotelsAction: PropTypes.func.isRequired,
 };
 
 export default connectState(FilterForm);
