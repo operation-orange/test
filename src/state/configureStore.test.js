@@ -1,8 +1,6 @@
 /* eslint-disable global-require */
-import { all, fork } from 'redux-saga/effects';
-import configureStore, { rootReducer, rootSaga } from './configureStore';
+import configureStore, { rootReducer } from './configureStore';
 import hotelsReducer from './hotels/reducer';
-import hotelsSagas from './hotels/sagas';
 
 jest.mock('redux', () => ({
   applyMiddleware: jest.fn(middleware => middleware),

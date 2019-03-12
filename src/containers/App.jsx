@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import connectState from './App.state';
+import FilterForm from '../components/FilterForm';
 
-export const App = ({ data, fetchHotelsAction }) => {
-  console.log(data);
-  setTimeout(fetchHotelsAction, 5000);
-  return (
-    <div>Greeting, Earth!</div>
-  );
-};
+export class App extends Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape(
 
-App.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape(
+    )).isRequired,
+    fetchHotelsAction: PropTypes.func.isRequired,
+  };
 
-  )).isRequired,
-  fetchHotelsAction: PropTypes.func.isRequired,
-};
+  componentDidMount() {
+    const { fetchHotelsAction } = this.props;
+    fetchHotelsAction();
+  }
+
+  render() {
+    const {
+      data,
+    } = this.props;
+
+    console.log(data);
+
+    return (
+      <div>
+        <FilterForm />
+      </div>
+    );
+  }
+}
 
 export default connectState(App);
