@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders empty list 1`] = `
+<span>
+  No results
+</span>
+`;
+
+exports[`renders list 1`] = `
+<table
+  className="hotels-list"
+>
+  <thead>
+    <tr>
+      <td>
+        Name
+      </td>
+      <td>
+        Rating
+      </td>
+      <td>
+        Facilities
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      key="1"
+    >
+      <td>
+        Testy
+      </td>
+      <td>
+        5
+      </td>
+      <td>
+        Gym
+      </td>
+    </tr>
+    <tr
+      key="2"
+    >
+      <td>
+        Westy
+      </td>
+      <td>
+        3
+      </td>
+      <td />
+    </tr>
+  </tbody>
+</table>
+`;

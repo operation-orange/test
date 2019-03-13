@@ -2,24 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const HotelsList = ({ data }) => (
-  <table className="hotels-list">
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Rating</td>
-        <td>Facilities</td>
-      </tr>
-    </thead>
-    <tbody>
-      {data.map(hotel => (
-        <tr key={hotel.id}>
-          <td>{hotel.name}</td>
-          <td>{hotel.rating}</td>
-          <td>{hotel.facilities.join(', ')}</td>
+  data.length ? (
+    <table className="hotels-list">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Rating</td>
+          <td>Facilities</td>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {data.map(hotel => (
+          <tr key={hotel.id}>
+            <td>{hotel.name}</td>
+            <td>{hotel.rating}</td>
+            <td>{hotel.facilities.join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) : (
+    <span>No results</span>
+  )
 );
 
 HotelsList.propTypes = {
