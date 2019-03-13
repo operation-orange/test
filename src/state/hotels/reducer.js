@@ -14,6 +14,7 @@ export const initialState = {
   loading: false,
   list: [],
   filteredList: [],
+  availableFacilities: [],
 };
 
 const testName = (name, filter) => name.toLowerCase().includes(filter.toLowerCase());
@@ -28,6 +29,11 @@ export const filterList = (list, {
   hotel => testName(hotel.name, name)
   && testRating(hotel.rating, rating)
   && testFacilities(hotel.facilities, facility),
+);
+
+// I don't like this. More time and I'd look into something clearer
+export const availableFacilities = hotels => (
+  [...new Set(hotels.reduce((acc, hotel) => acc.concat(hotel.facilities), []))]
 );
 
 const reducer = (state = initialState, action) => {
@@ -45,8 +51,13 @@ const reducer = (state = initialState, action) => {
       return { ...state, loading: true };
     }
     case FETCH_SUCCESSFUL: {
+      const facilities = availableFacilities(action.payload);
       return {
-        ...state, loading: false, list: action.payload, filteredList: action.payload,
+        ...state,
+        loading: false,
+        list: action.payload,
+        filteredList: action.payload,
+        availableFacilities: facilities,
       };
     }
     default: {
