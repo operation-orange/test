@@ -9,7 +9,7 @@ export const initialState = {
   filterForm: {
     name: '',
     rating: '',
-    facility: '',
+    facilities: [],
   },
   loading: false,
   list: [],
@@ -19,16 +19,22 @@ export const initialState = {
 
 const testName = (name, filter) => name.toLowerCase().includes(filter.toLowerCase());
 const testRating = (rating, filter) => String(rating).includes(filter);
-const testFacilities = (facilities, facility) => !facility || facilities.includes(facility);
+const testFacilities = (facilities, filter) => !filter.length || filter.reduce((acc, item) => {
+  if (!facilities.includes(item)) {
+    return false;
+  }
+
+  return acc;
+}, true);
 
 export const filterList = (list, {
   name,
   rating,
-  facility,
+  facilities,
 }) => list.filter(
   hotel => testName(hotel.name, name)
   && testRating(hotel.rating, rating)
-  && testFacilities(hotel.facilities, facility),
+  && testFacilities(hotel.facilities, facilities),
 );
 
 // I don't like this. More time and I'd look into something clearer

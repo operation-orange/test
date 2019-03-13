@@ -2,10 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import connectState from './FilterForm.state';
 
-const changeHandler = (action, field) => e => action({ [field]: e.currentTarget.value });
+const textChangeHandler = (action, field) => e => action({ [field]: e.target.value });
+const facilitiesChangeHandler = (action, selectedFacilities) => (e) => {
+  if (e.target.checked) {
+    action({ facilities: [...selectedFacilities, e.target.value] });
+  } else {
+    action({ facilities: selectedFacilities.filter(facility => facility !== e.target.value) });
+  }
+};
 
 export const FilterForm = ({
-  name, rating, facility, updateFilterFormAction, filterHotelsAction,
+  name, rating, selectedFacilities, updateFilterFormAction, filterHotelsAction, availableFacilities,
 }) => (
   <div className="filter-form">
     Hotel Name:
@@ -13,7 +20,7 @@ export const FilterForm = ({
     <input
       type="text"
       className="filter-form__name-field"
-      onChange={changeHandler(updateFilterFormAction, 'name')}
+      onChange={textChangeHandler(updateFilterFormAction, 'name')}
       value={name}
     />
     {' '}
@@ -22,18 +29,24 @@ export const FilterForm = ({
     <input
       type="text"
       className="filter-form__rating-field"
-      onChange={changeHandler(updateFilterFormAction, 'rating')}
+      onChange={textChangeHandler(updateFilterFormAction, 'rating')}
       value={rating}
     />
     {' '}
     Facility:
     {' '}
-    <input
-      type="text"
-      className="filter-form__facility-field"
-      onChange={changeHandler(updateFilterFormAction, 'facility')}
-      value={facility}
-    />
+    {availableFacilities.map((facility, i) => (
+      <label key={facility} htmlFor={`facility${i}`}>
+        {facility}
+        <input
+          id={`facility${i}`}
+          type="checkbox"
+          value={facility}
+          onChange={facilitiesChangeHandler(updateFilterFormAction, selectedFacilities)}
+          checked={selectedFacilities.includes(facility)}
+        />
+      </label>
+    ))}
     <button
       type="button"
       onClick={filterHotelsAction}
@@ -46,9 +59,10 @@ export const FilterForm = ({
 FilterForm.propTypes = {
   name: PropTypes.string.isRequired,
   rating: PropTypes.string.isRequired,
-  facility: PropTypes.string.isRequired,
+  selectedFacilities: PropTypes.arrayOf(PropTypes.string).isRequired,
   updateFilterFormAction: PropTypes.func.isRequired,
   filterHotelsAction: PropTypes.func.isRequired,
+  availableFacilities: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connectState(FilterForm);

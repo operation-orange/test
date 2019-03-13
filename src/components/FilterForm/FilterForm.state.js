@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 
 import { updateFilterForm, filterHotels } from '../../state/hotels/actions';
 
-export const mapStateToProps = ({ hotels: { filterForm } }) => ({
+export const mapStateToProps = ({ hotels: { filterForm, availableFacilities } }) => ({
   name: filterForm.name,
   rating: filterForm.rating,
-  facility: filterForm.facility,
+  selectedFacilities: filterForm.facilities,
+  availableFacilities,
 });
 
 export const mapDispatchToProps = {
