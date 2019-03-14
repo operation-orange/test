@@ -13,13 +13,15 @@ test('mapStateToProps() is configured as expected', () => {
       filterForm: {
         name: 'name',
         rating: 'rating',
-        facility: 'facility',
+        facilities: 'facility',
       },
+      availableFacilities: ['testy', 'westy'],
     },
   })).toEqual({
     name: 'name',
     rating: 'rating',
-    facility: 'facility',
+    selectedFacilities: 'facility',
+    availableFacilities: ['testy', 'westy'],
   });
 });
 

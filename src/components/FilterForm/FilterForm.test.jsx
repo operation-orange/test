@@ -8,6 +8,8 @@ test('renders default state passing form data', () => {
       name="the name"
       rating="the rating"
       facility="the facility"
+      selectedFacilities={[]}
+      availableFacilities={[]}
       updateFilterFormAction={() => {}}
       filterHotelsAction={() => {}}
     />,
@@ -15,20 +17,22 @@ test('renders default state passing form data', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test.each(['name', 'rating', 'facility'])('onChange for the %s field triggers updateFilterFormAction', (field) => {
+test.each(['name', 'rating'])('onChange for the %s field triggers updateFilterFormAction', (field) => {
   const mockUpdateFilterFormAction = jest.fn();
   const wrapper = shallow(
     <FilterForm
       name="the name"
       rating="the rating"
       facility="the facility"
+      selectedFacilities={[]}
+      availableFacilities={[]}
       updateFilterFormAction={mockUpdateFilterFormAction}
       filterHotelsAction={() => {}}
     />,
   );
 
   wrapper.find(`.filter-form__${field}-field`).simulate('change', {
-    currentTarget: {
+    target: {
       value: 'test value',
     },
   });
@@ -37,3 +41,5 @@ test.each(['name', 'rating', 'facility'])('onChange for the %s field triggers up
     [field]: 'test value',
   });
 });
+
+// TODO: facility filter test

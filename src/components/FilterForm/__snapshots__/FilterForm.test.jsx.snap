@@ -24,12 +24,6 @@ exports[`renders default state passing form data 1`] = `
    
   Facility:
    
-  <input
-    className="filter-form__facility-field"
-    onChange={[Function]}
-    type="text"
-    value="the facility"
-  />
   <button
     onClick={[Function]}
     type="button"

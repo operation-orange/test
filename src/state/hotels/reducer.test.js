@@ -11,11 +11,12 @@ test('test default state', () => {
     filterForm: {
       name: '',
       rating: '',
-      facility: '',
+      facilities: [],
     },
     loading: false,
     list: [],
     filteredList: [],
+    availableFacilities: [],
   });
 });
 
@@ -56,12 +57,14 @@ test('fetchHotelsSuccessful() action updates state as expected', () => {
     loading: false,
     list: [],
     filteredList: [],
+    availableFacilities: [],
   };
-  const newState = reducer(mockState, fetchHotelsSuccessful([{ testy: 'westy' }]));
+  const newState = reducer(mockState, fetchHotelsSuccessful([{ facilities: ['westy'] }]));
   expect(newState).toEqual({
     loading: false,
-    list: [{ testy: 'westy' }],
-    filteredList: [{ testy: 'westy' }],
+    list: [{ facilities: ['westy'] }],
+    filteredList: [{ facilities: ['westy'] }],
+    availableFacilities: ['westy'],
   });
 });
 
@@ -70,24 +73,24 @@ test('filterHotels() action updates state as expected', () => {
     filterForm: {
       name: 'westy',
       rating: '',
-      facility: '',
+      facilities: [],
     },
     list: [
-      { name: 'testy' },
-      { name: 'westy' },
+      { name: 'testy', facilities: [] },
+      { name: 'westy', facilities: [] },
     ],
     filteredList: [],
   };
 
   const newState = reducer(mockState, filterHotels());
-  expect(newState.filteredList).toEqual([{ name: 'westy' }]);
+  expect(newState.filteredList).toEqual([{ name: 'westy', facilities: [] }]);
 });
 
 test('filterList() utility filters by name as expected', () => {
   const filteredList = filterList([
     { name: 'testy', rating: 3, facilities: ['car park'] },
     { name: 'westy', rating: 4, facilities: ['gym'] },
-  ], { name: 'testy', rating: '', facility: '' });
+  ], { name: 'testy', rating: '', facilities: [] });
   expect(filteredList).toEqual([{ name: 'testy', rating: 3, facilities: ['car park'] }]);
 });
 
@@ -95,7 +98,7 @@ test('filterList() utility filters by rating as expected', () => {
   const filteredList = filterList([
     { name: 'testy', rating: 3, facilities: ['car park'] },
     { name: 'westy', rating: 4, facilities: ['gym'] },
-  ], { name: '', rating: '4', facility: '' });
+  ], { name: '', rating: '4', facilities: [] });
   expect(filteredList).toEqual([{ name: 'westy', rating: 4, facilities: ['gym'] }]);
 });
 
@@ -103,6 +106,6 @@ test('filterList() utility filters by facility as expected', () => {
   const filteredList = filterList([
     { name: 'testy', rating: 3, facilities: ['car park'] },
     { name: 'westy', rating: 4, facilities: ['gym'] },
-  ], { name: '', rating: '', facility: 'gym' });
+  ], { name: '', rating: '', facilities: ['gym'] });
   expect(filteredList).toEqual([{ name: 'westy', rating: 4, facilities: ['gym'] }]);
 });
