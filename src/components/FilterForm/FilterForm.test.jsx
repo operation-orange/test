@@ -9,7 +9,7 @@ test('renders default state passing form data', () => {
       rating="the rating"
       facility="the facility"
       selectedFacilities={[]}
-      availableFacilities={[]}
+      availableFacilities={['gym']}
       updateFilterFormAction={() => {}}
       filterHotelsAction={() => {}}
     />,
@@ -17,7 +17,7 @@ test('renders default state passing form data', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-test.each(['name', 'rating'])('onChange for the %s field triggers updateFilterFormAction', (field) => {
+test.each(['name', 'rating'])('onChange for the %s field triggers updateFilterFormAction()', (field) => {
   const mockUpdateFilterFormAction = jest.fn();
   const wrapper = shallow(
     <FilterForm
@@ -42,4 +42,56 @@ test.each(['name', 'rating'])('onChange for the %s field triggers updateFilterFo
   });
 });
 
-// TODO: facility filter test
+test('a checked facility checkbox triggers facilitiesChangeHandler() and adds to selection', () => {
+  const mockUpdateFilterFormAction = jest.fn();
+  const wrapper = shallow(
+    <FilterForm
+      name="the name"
+      rating="the rating"
+      facility="the facility"
+      selectedFacilities={['gym']}
+      availableFacilities={['gym', 'spa']}
+      updateFilterFormAction={mockUpdateFilterFormAction}
+      filterHotelsAction={() => {}}
+    />,
+  );
+
+  const checkbox = wrapper.find({ id: 'facility0' });
+
+  checkbox.simulate('change', {
+    target: {
+      checked: true,
+      value: 'test value',
+    },
+  });
+  expect(mockUpdateFilterFormAction).toHaveBeenLastCalledWith({
+    facilities: ['gym', 'test value'],
+  });
+});
+
+test('an unchecked facility checkbox triggers facilitiesChangeHandler() and removes from selection', () => {
+  const mockUpdateFilterFormAction = jest.fn();
+  const wrapper = shallow(
+    <FilterForm
+      name="the name"
+      rating="the rating"
+      facility="the facility"
+      selectedFacilities={['gym']}
+      availableFacilities={['gym', 'spa']}
+      updateFilterFormAction={mockUpdateFilterFormAction}
+      filterHotelsAction={() => {}}
+    />,
+  );
+
+  const checkbox = wrapper.find({ id: 'facility0' });
+
+  checkbox.simulate('change', {
+    target: {
+      checked: false,
+      value: 'gym',
+    },
+  });
+  expect(mockUpdateFilterFormAction).toHaveBeenLastCalledWith({
+    facilities: [],
+  });
+});

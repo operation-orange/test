@@ -21,9 +21,22 @@ exports[`renders default state passing form data 1`] = `
     type="text"
     value="the rating"
   />
-   
+  poo
   Facility:
    
+  <label
+    htmlFor="facility0"
+    key="gym"
+  >
+    gym
+    <input
+      checked={false}
+      id="facility0"
+      onChange={[Function]}
+      type="checkbox"
+      value="gym"
+    />
+  </label>
   <button
     onClick={[Function]}
     type="button"
