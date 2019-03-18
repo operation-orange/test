@@ -21,7 +21,7 @@ exports[`renders default state passing form data 1`] = `
     type="text"
     value="the rating"
   />
-  poo
+   
   Facility:
    
   <label
