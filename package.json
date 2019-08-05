@@ -71,8 +71,8 @@
       "node"
     ],
     "watchPlugins": [
-      "/home/damon/Projects/src/operation-orange/laterooms-test/node_modules/jest-watch-typeahead/filename.js",
-      "/home/damon/Projects/src/operation-orange/laterooms-test/node_modules/jest-watch-typeahead/testname.js"
+      "<rootDir>/node_modules/jest-watch-typeahead/filename.js",
+      "<rootDir>/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "babel": {
@@ -83,7 +83,7 @@
   "dependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "4.1.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
